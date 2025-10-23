@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public Sprite[] playerSprites = new Sprite[4];
     private SpriteRenderer currentSprite;
     private Transform tr;
-    public float speed = 1f;
+    public float speed = 50f;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +24,21 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = new Vector3(xAxis, 0f, zAxis);
 
         tr.Translate(move * speed * Time.deltaTime, Space.World);
+        ChangeSprite();
+
+        // if (Input.GetKey(KeyCode.LeftShift))
+        // {
+        //     Debug.Log("button is pressed");
+        //     speed *= 2;
+        // } 
+        // else
+        // {
+        //     speed = 50;
+        // }
+    }
+
+    public void ChangeSprite()
+    {
         if (Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.UpArrow))
         {
             
